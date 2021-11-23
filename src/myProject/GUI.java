@@ -93,12 +93,14 @@ public class GUI extends JFrame {
 
         @Override
         public void mouseEntered(MouseEvent e) {
-
+            panelMouse.setBackground(Color.GRAY);
+            mensajes.append("mouseEntered was detected \n");
         }
 
         @Override
         public void mouseExited(MouseEvent e) {
-
+            panelMouse.setBackground(Color.YELLOW);
+            mensajes.append("mouseExited was detected \n");
         }
     }
 }
