@@ -2,9 +2,7 @@ package myProject;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
+import java.awt.event.*;
 
 /**
  * This class is used for show use MouseListener, MouseMotionListener and KeyListener
@@ -48,6 +46,8 @@ public class GUI extends JFrame {
         panelMouse = new JPanel();
         panelMouse.addMouseListener(escucha);
         panelMouse.addMouseMotionListener(escucha);
+        panelMouse.addKeyListener(escucha);
+        panelMouse.setFocusable(true);
         panelMouse.setBackground(Color.BLUE);
         panelMouse.setPreferredSize(new Dimension(600,120));
 
@@ -73,7 +73,7 @@ public class GUI extends JFrame {
     /**
      * inner class that extends an Adapter Class or implements Listeners used by GUI class
      */
-    private class Escucha implements MouseListener, MouseMotionListener {
+    private class Escucha implements MouseListener, MouseMotionListener, KeyListener {
 
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -115,6 +115,24 @@ public class GUI extends JFrame {
         public void mouseMoved(MouseEvent e) {
              mensajes.append("mouseMoved was detected \n"+
                              "Mouse position x = "+e.getX()+" Mouse position y = "+e.getY()+"\n");
+        }
+
+        @Override
+        public void keyTyped(KeyEvent e) {
+            mensajes.append("keyTyped was detected \n"+
+                            "Tecla alfa numérica = "+e.getKeyChar()+"\n");
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            mensajes.append("keyTyped was detected \n"+
+                            "Tecla = "+e.getKeyChar()+"\n");
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+            mensajes.append("keyReleased was detected \n"+
+                            "Tecla = "+e.getKeyChar()+"\n");
         }
     }
 }
