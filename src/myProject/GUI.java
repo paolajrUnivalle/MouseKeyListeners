@@ -107,12 +107,14 @@ public class GUI extends JFrame {
 
         @Override
         public void mouseDragged(MouseEvent e) {
-
+            mensajes.append("mouseDragged was detected \n"+
+                    "Mouse position x = "+e.getX()+" Mouse position y = "+e.getY()+"\n");
         }
 
         @Override
         public void mouseMoved(MouseEvent e) {
-
+             mensajes.append("mouseMoved was detected \n"+
+                             "Mouse position x = "+e.getX()+" Mouse position y = "+e.getY()+"\n");
         }
     }
 }
