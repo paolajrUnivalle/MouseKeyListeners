@@ -15,6 +15,7 @@ public class GUI extends JFrame {
     private Header headerProject;
     private JPanel panelMouse;
     private JTextArea mensajes;
+    private Escucha escucha;
 
     /**
      * Constructor of GUI class
@@ -38,14 +39,15 @@ public class GUI extends JFrame {
     private void initGUI() {
         //Set up JFrame Container's Layout
         //Create Listener Object and Control Object
+        escucha = new Escucha();
         //Set up JComponents
         headerProject = new Header("Manejando Escuchas del Mouse y del Teclado", Color.BLACK);
         this.add(headerProject,BorderLayout.NORTH); //Change this line if you change JFrame Container's Layout
 
         panelMouse = new JPanel();
+        panelMouse.addMouseListener(escucha);
         panelMouse.setBackground(Color.BLUE);
         panelMouse.setPreferredSize(new Dimension(600,120));
-
 
         mensajes = new JTextArea(7,3);
         mensajes.setEditable(false);
@@ -73,17 +75,20 @@ public class GUI extends JFrame {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-
+            panelMouse.setBackground(Color.CYAN);
+            mensajes.append("mouseClicked was detected \n");
         }
 
         @Override
         public void mousePressed(MouseEvent e) {
-
+           panelMouse.setBackground(Color.pink);
+           mensajes.append("mousePressed was detected \n");
         }
 
         @Override
         public void mouseReleased(MouseEvent e) {
-
+            panelMouse.setBackground(Color.BLACK);
+            mensajes.append("mouseReleased was detected \n");
         }
 
         @Override
