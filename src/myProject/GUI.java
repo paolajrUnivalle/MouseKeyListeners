@@ -45,7 +45,6 @@ public class GUI extends JFrame {
 
         panelMouse = new JPanel();
         panelMouse.addMouseListener(escucha);
-        panelMouse.addMouseMotionListener(escucha);
         panelMouse.addKeyListener(escucha);
         panelMouse.setFocusable(true);
         panelMouse.setBackground(Color.BLUE);
@@ -73,48 +72,12 @@ public class GUI extends JFrame {
     /**
      * inner class that extends an Adapter Class or implements Listeners used by GUI class
      */
-    private class Escucha implements MouseListener, MouseMotionListener, KeyListener {
+    private class Escucha extends MouseAdapter implements KeyListener {
 
         @Override
         public void mouseClicked(MouseEvent e) {
             panelMouse.setBackground(Color.CYAN);
             mensajes.append("mouseClicked was detected \n");
-        }
-
-        @Override
-        public void mousePressed(MouseEvent e) {
-           panelMouse.setBackground(Color.pink);
-           mensajes.append("mousePressed was detected \n");
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent e) {
-            panelMouse.setBackground(Color.BLACK);
-            mensajes.append("mouseReleased was detected \n");
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent e) {
-            panelMouse.setBackground(Color.GRAY);
-            mensajes.append("mouseEntered was detected \n");
-        }
-
-        @Override
-        public void mouseExited(MouseEvent e) {
-            panelMouse.setBackground(Color.YELLOW);
-            mensajes.append("mouseExited was detected \n");
-        }
-
-        @Override
-        public void mouseDragged(MouseEvent e) {
-            mensajes.append("mouseDragged was detected \n"+
-                    "Mouse position x = "+e.getX()+" Mouse position y = "+e.getY()+"\n");
-        }
-
-        @Override
-        public void mouseMoved(MouseEvent e) {
-             mensajes.append("mouseMoved was detected \n"+
-                             "Mouse position x = "+e.getX()+" Mouse position y = "+e.getY()+"\n");
         }
 
         @Override
